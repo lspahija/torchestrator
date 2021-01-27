@@ -14,13 +14,13 @@ import java.util.*
 
 @Service
 class TorManager(
-    val torConfiguration: TorConfiguration,
-    val portService: PortService
+    private val torConfiguration: TorConfiguration,
+    private val portService: PortService,
 ) {
 
     private val logger = LoggerFactory.getLogger(TorManager::class.java)
-    val dockerClient: DockerClient = DockerClientBuilder.getInstance().build()
-    val containerQueue: Queue<TorContainer> = initializeTorContainers()
+    private val dockerClient: DockerClient = DockerClientBuilder.getInstance().build()
+    private val containerQueue: Queue<TorContainer> = initializeTorContainers()
 
     fun getNextProxyPort() =
         containerQueue

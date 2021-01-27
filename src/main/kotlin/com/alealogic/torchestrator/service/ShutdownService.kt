@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service
 import javax.annotation.PreDestroy
 
 @Service
-class ShutdownService(val torManager: TorManager) {
+class ShutdownService(private val torManager: TorManager) {
 
     @PreDestroy
     fun killAllContainers() =

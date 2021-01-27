@@ -1,7 +1,6 @@
 package com.alealogic.torchestrator.controller
 
 import com.alealogic.torchestrator.client.ExampleClient
-import com.alealogic.torchestrator.service.TorManager
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.RestController
 

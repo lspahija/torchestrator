@@ -27,8 +27,7 @@ class ExampleClient(
                     .url(testUrl)
                     .build() to it
             }
-            .map { it.second.newCall(it.first) }
-            .map { it.execute() }
+            .map { it.second.newCall(it.first).execute() }
             .map { it.body?.string()?.trim() }
             .toList()
 
