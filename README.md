@@ -13,5 +13,6 @@ To run:
 - `./gradlew bootRun` (with JDK 15) or run in an IDE like IntelliJ IDEA
 - get next proxy port with `GET localhost:8080/port`
 
-A sample HTTP client proxying requests via Tor instances can be found in `torchestrator/src/main/kotlin/com/alealogic/torchestrator/client/ExampleClient.kt`
-    
+A sample Kotlin HTTP client proxying requests via Tor instances can be found in `torchestrator/src/main/kotlin/com/alealogic/torchestrator/client/ExampleClient.kt`
+
+A sample Python client can be found in `torchestrator/python/example_client.py`
