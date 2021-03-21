@@ -4,7 +4,7 @@ Torchestrator can spin up Tor containers and expose ports for proxying HTTP requ
 
 The IP address of the exit node of each Tor instance will vary. This is useful for IP address rotation.
 
-###To run:
+### To run:
     
 - `cd torchestrator/docker/torprivoxydocker`
 - `docker build -t torprivoxy:1.0 .`
@@ -13,9 +13,9 @@ The IP address of the exit node of each Tor instance will vary. This is useful f
 - `./gradlew bootRun` (with JDK 15) or run in an IDE like IntelliJ IDEA
 - get next proxy port with `GET localhost:8080/port`
 
-##Examples
+## Examples
 
-Scraping from Python using Torchestrator as a proxy provider:
+Scraping with Python using Torchestrator as a proxy provider:
 ```python
 import requests
 
