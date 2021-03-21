@@ -16,7 +16,7 @@ The IP address of the exit node of each Tor instance will vary. This is useful f
 ##Examples
 
 Scraping from Python using Torchestrator as a proxy provider:
-```
+```python
 import requests
 
 torchestrator_host = "http://localhost"
