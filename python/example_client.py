@@ -1,12 +1,12 @@
 import requests
 
-torchestrator_host = "http://localhost"
+torchestrator_host = "localhost"
 tochestrator_port = 8080
 torchestrator_api_path = "port"
 
 
 def fetch_proxy_port():
-    response = requests.get(f'{torchestrator_host}:{tochestrator_port}/{torchestrator_api_path}')
+    response = requests.get(f'http://{torchestrator_host}:{tochestrator_port}/{torchestrator_api_path}')
     return response.text
 
 
