@@ -45,4 +45,4 @@ scrape_using_proxy("http://icanhazip.com/")
 Similarly, a sample Kotlin HTTP client proxying requests via Tor instances can be found in `torchestrator/src/main/kotlin/com/alealogic/torchestrator/client/ExampleClient.kt`
 
 ## Find this useful?
-Please star this repository! It helps me (and other contributors) gauge the popularity of the repo and determine how much time to allot to development.
+Please star this repository! It helps contributors gauge the popularity of the repo and determine how much time to allot to development.
