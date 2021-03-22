@@ -19,13 +19,13 @@ Scraping with Python using Torchestrator as a proxy provider:
 ```python
 import requests
 
-torchestrator_host = "http://localhost"
+torchestrator_host = "localhost"
 tochestrator_port = 8080
 torchestrator_api_path = "port"
 
 
 def fetch_proxy_port():
-    response = requests.get(f'{torchestrator_host}:{tochestrator_port}/{torchestrator_api_path}')
+    response = requests.get(f'http://{torchestrator_host}:{tochestrator_port}/{torchestrator_api_path}')
     return response.text
 
 
@@ -39,7 +39,7 @@ def scrape_using_proxy(url):
     print(response.text)
   
     
-scrape_with_proxy("http://icanhazip.com/")
+scrape_using_proxy("http://icanhazip.com/")
 ```
 
 Similarly, a sample Kotlin HTTP client proxying requests via Tor instances can be found in `torchestrator/src/main/kotlin/com/alealogic/torchestrator/client/ExampleClient.kt`
