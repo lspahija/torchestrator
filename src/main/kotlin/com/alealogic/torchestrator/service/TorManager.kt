@@ -3,8 +3,12 @@ package com.alealogic.torchestrator.service
 import com.alealogic.torchestrator.config.TorConfiguration
 import com.alealogic.torchestrator.model.TorContainer
 import com.github.dockerjava.api.DockerClient
+import com.github.dockerjava.api.async.ResultCallback
+import com.github.dockerjava.api.command.BuildImageResultCallback
+import com.github.dockerjava.api.model.BuildResponseItem
 import com.github.dockerjava.api.model.HostConfig
 import com.github.dockerjava.core.DockerClientBuilder
+import okhttp3.internal.wait
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.io.*
@@ -32,8 +36,31 @@ class TorManager(
         containerQueue
             .forEach { it.shutDown(dockerClient) }
 
+    private fun imageExists() =
+        dockerClient.listImagesCmd()
+            .exec()
+            .map { it.repoTags }
+            .filterNotNull()
+            .flatMap{ it.toList() }
+            .contains(torConfiguration.imageName)
+
+
+    private fun buildImage(){
+        if (imageExists()) return
+
+        dockerClient.buildImageCmd()
+            .withDockerfile(File("docker/torprivoxydocker/Dockerfile"))
+            .withPull(true)
+            .withNoCache(true)
+            .withTags(setOf(torConfiguration.imageName))
+            .start()
+            .run { awaitCompletion() }
+            .also { imageExists() }
+    }
+
     private fun initializeTorContainers() =
-        (1..torConfiguration.containerQuantity)
+        buildImage()
+            .run { (1..torConfiguration.containerQuantity) }
             .map { portService.getThreeAvailablePorts().iterator() }
             .map { runTorContainer(it.next(), it.next(), it.next()) }
             .onEach { authenticateTor(it) }

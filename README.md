@@ -5,12 +5,10 @@ Torchestrator can spin up Tor containers and expose ports for proxying HTTP requ
 The IP address of the exit node of each Tor instance will vary. This is useful for IP address rotation.
 
 ### To run:
-    
-- `cd torchestrator/docker/torprivoxydocker`
-- `docker build -t torprivoxy:1.0 .`
+
 - set number of Tor containers you wish to spin up with config property `tor.containerQuantity` in `torchestrator/src/main/resources/application.properties` 
   (default is 10, but can be a much higher number depending on RAM)
-- `./gradlew bootRun` (with JDK 15) or run in an IDE like IntelliJ IDEA
+- cd into `torchestrator` directory and execute `./gradlew bootRun` (with JDK 15) or run in an IDE like IntelliJ IDEA
 - get next proxy port with `GET localhost:8080/port`
 
 ## Examples
