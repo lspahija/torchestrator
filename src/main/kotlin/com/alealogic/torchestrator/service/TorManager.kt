@@ -3,12 +3,8 @@ package com.alealogic.torchestrator.service
 import com.alealogic.torchestrator.config.TorConfiguration
 import com.alealogic.torchestrator.model.TorContainer
 import com.github.dockerjava.api.DockerClient
-import com.github.dockerjava.api.async.ResultCallback
-import com.github.dockerjava.api.command.BuildImageResultCallback
-import com.github.dockerjava.api.model.BuildResponseItem
 import com.github.dockerjava.api.model.HostConfig
 import com.github.dockerjava.core.DockerClientBuilder
-import okhttp3.internal.wait
 import org.slf4j.LoggerFactory
 import org.springframework.stereotype.Service
 import java.io.*
